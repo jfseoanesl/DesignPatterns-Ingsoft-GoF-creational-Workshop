@@ -1,0 +1,72 @@
+@startuml
+skinparam dpi 170
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 12
+skinparam roundCorner 6
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4A5C
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #3B4A5C
+  BorderThickness 1.3
+  HeaderBackgroundColor #ECEFF3
+  FontStyle bold
+  StereotypeFontColor #555555
+}
+skinparam note {
+  BackgroundColor #FDFBEA
+  BorderColor #B9A64B
+  FontSize 11
+}
+skinparam package {
+  BorderColor #8A8A8A
+  FontStyle normal
+}
+skinparam stereotypeIBackgroundColor #FFF4D6
+skinparam stereotypeABackgroundColor #E3F1E8
+hide empty members
+class TransferenciasService {
+  +notificarTransferencia(cliente: Cliente, monto: long): String
+}
+class PrestamosService {
+  +notificarPago(cliente: Cliente, cuota: int): String
+}
+class Cliente <<record>> {
+  +nombre: String
+  +canal: String
+  +contacto: String
+}
+class ConfiguracionBanco {
+  +{static} lecturas: int
+  +servidorCorreo: String
+  +proveedorSms: String
+  +ConfiguracionBanco()
+}
+class Mensaje {
+  +Mensaje(destino, asunto, cuerpo, adjunto, prioridad,
+  plantilla, idioma, requiereAcuse)
+}
+class EnvioCorreo {
+  +EnvioCorreo(cfg: ConfiguracionBanco)
+  +enviar(m: Mensaje): String
+}
+class EnvioSms {
+  +EnvioSms(cfg: ConfiguracionBanco)
+  +enviar(m: Mensaje): String
+}
+class EnvioPush {
+  +enviar(m: Mensaje): String
+}
+TransferenciasService ..> ConfiguracionBanco : new
+PrestamosService ..> ConfiguracionBanco : new
+TransferenciasService ..> EnvioCorreo : new
+TransferenciasService ..> EnvioSms : new
+TransferenciasService ..> EnvioPush : new
+PrestamosService ..> EnvioCorreo : new
+PrestamosService ..> EnvioPush : new
+TransferenciasService ..> Mensaje : new
+PrestamosService ..> Mensaje : new
+@enduml

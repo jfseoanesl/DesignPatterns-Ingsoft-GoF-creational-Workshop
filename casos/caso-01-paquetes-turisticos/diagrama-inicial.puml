@@ -1,0 +1,81 @@
+@startuml
+skinparam dpi 170
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 12
+skinparam roundCorner 6
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4A5C
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #3B4A5C
+  BorderThickness 1.3
+  HeaderBackgroundColor #ECEFF3
+  FontStyle bold
+  StereotypeFontColor #555555
+}
+skinparam note {
+  BackgroundColor #FDFBEA
+  BorderColor #B9A64B
+  FontSize 11
+}
+skinparam package {
+  BorderColor #8A8A8A
+  FontStyle normal
+}
+skinparam stereotypeIBackgroundColor #FFF4D6
+skinparam stereotypeABackgroundColor #E3F1E8
+hide empty members
+class ServicioReservas {
+  +reservar(pais: String, destino: String, inicio: LocalDate,
+  fin: LocalDate, viajeros: int, traslado: boolean,
+  seguro: boolean, tour: String): PaqueteTuristico
+}
+class PaqueteTuristico {
+  -destino: String
+  -inicio: LocalDate
+  -fin: LocalDate
+  -viajeros: int
+  -vuelo: Object
+  -hotel: Object
+  -traslado: Object
+  -seguro: boolean
+  -tour: String
+  +PaqueteTuristico(destino, inicio, fin, viajeros, vuelo, hotel)
+  +PaqueteTuristico(destino, inicio, fin, viajeros, vuelo, hotel, traslado)
+  +PaqueteTuristico(destino, inicio, fin, viajeros, vuelo, hotel, traslado, seguro, tour)
+  +precio(): double
+  +resumen(): String
+}
+class VueloAndino {
+  +tarifa(viajeros: int): double
+}
+class HotelCaribe {
+  +tarifaNoche(): double
+}
+class TrasladoBogota {
+  +costo(): double
+}
+class VueloInca {
+  +precioPorPersona(): double
+}
+class HotelCusco {
+  +valorNoche(): double
+}
+class TrasladoLima {
+  +valor(): double
+}
+ServicioReservas ..> PaqueteTuristico : new
+ServicioReservas ..> VueloAndino : new
+ServicioReservas ..> HotelCaribe : new
+ServicioReservas ..> TrasladoBogota : new
+ServicioReservas ..> VueloInca : new
+ServicioReservas ..> HotelCusco : new
+ServicioReservas ..> TrasladoLima : new
+PaqueteTuristico --> VueloAndino
+PaqueteTuristico --> VueloInca
+PaqueteTuristico --> HotelCaribe
+PaqueteTuristico --> HotelCusco
+@enduml

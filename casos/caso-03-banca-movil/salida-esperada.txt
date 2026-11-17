@@ -1,0 +1,5 @@
+EMAIL via smtp.bancoagil.co -> ana@correo.co: Transferencia por $500000 (p2, es, adj=comprobante.pdf)
+SMS via sms-gw-2 -> 3001234567: Transferencia por $80000
+PUSH -> device-77: Pago cuota 7
+(sin notificación para canal SMS)
+Lecturas de configuración: 4

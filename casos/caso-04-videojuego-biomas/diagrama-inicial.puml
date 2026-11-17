@@ -1,0 +1,69 @@
+@startuml
+skinparam dpi 170
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 12
+skinparam roundCorner 6
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4A5C
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #3B4A5C
+  BorderThickness 1.3
+  HeaderBackgroundColor #ECEFF3
+  FontStyle bold
+  StereotypeFontColor #555555
+}
+skinparam note {
+  BackgroundColor #FDFBEA
+  BorderColor #B9A64B
+  FontSize 11
+}
+skinparam package {
+  BorderColor #8A8A8A
+  FontStyle normal
+}
+skinparam stereotypeIBackgroundColor #FFF4D6
+skinparam stereotypeABackgroundColor #E3F1E8
+hide empty members
+class GeneradorNivel {
+  +generar(bioma: String, enemigos: int): Nivel
+}
+class Nivel {
+  +fondo: Object
+  +obstaculos: List<Object>
+  +enemigos: List<Object>
+  +describir(): String
+}
+class Jaguar {
+  -sprite: byte[]
+  -vida: int
+  -x: int
+  +Jaguar(x: int)
+}
+class Escorpion {
+  -sprite: byte[]
+  -vida: int
+  -x: int
+  +Escorpion(x: int)
+}
+class Liana
+class Cactus
+class FondoSelva
+class FondoDesierto
+class CargadorSprites {
+  +{static} cargas: int
+  +{static} cargar(nombre: String): byte[]
+}
+GeneradorNivel ..> Nivel : new
+GeneradorNivel ..> Jaguar : new
+GeneradorNivel ..> Escorpion : new
+GeneradorNivel ..> Liana : new
+GeneradorNivel ..> Cactus : new
+GeneradorNivel ..> FondoSelva : new
+GeneradorNivel ..> FondoDesierto : new
+Jaguar ..> CargadorSprites
+Escorpion ..> CargadorSprites
+@enduml

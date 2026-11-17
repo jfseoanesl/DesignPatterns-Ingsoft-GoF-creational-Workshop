@@ -1,0 +1,69 @@
+@startuml
+skinparam dpi 170
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 12
+skinparam roundCorner 6
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4A5C
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #3B4A5C
+  BorderThickness 1.3
+  HeaderBackgroundColor #ECEFF3
+  FontStyle bold
+  StereotypeFontColor #555555
+}
+skinparam note {
+  BackgroundColor #FDFBEA
+  BorderColor #B9A64B
+  FontSize 11
+}
+skinparam package {
+  BorderColor #8A8A8A
+  FontStyle normal
+}
+skinparam stereotypeIBackgroundColor #FFF4D6
+skinparam stereotypeABackgroundColor #E3F1E8
+hide empty members
+class RepositorioFacturas {
+  -pool: PoolConexiones
+  -motor: String
+  +buscar(cliente: String, desde: LocalDate, hasta: LocalDate,
+  estado: String, valorMinimo: Long, pagina: Integer): String
+}
+class RepositorioClientes {
+  -pool: PoolConexiones
+  -motor: String
+  +todos(pagina: int): String
+}
+class PoolConexiones {
+  +{static} poolsAbiertos: int
+  +PoolConexiones(motor: String)
+  +obtener(): Object
+}
+class ConexionPostgres {
+  +preparar(sql: String): SentenciaPostgres
+}
+class ConexionOracle {
+  +preparar(sql: String): SentenciaOracle
+}
+class SentenciaPostgres {
+  +ejecutar(): String
+}
+class SentenciaOracle {
+  +ejecutar(): String
+}
+RepositorioFacturas *--> PoolConexiones : new
+RepositorioClientes *--> PoolConexiones : new
+PoolConexiones ..> ConexionPostgres : new
+PoolConexiones ..> ConexionOracle : new
+ConexionPostgres ..> SentenciaPostgres
+ConexionOracle ..> SentenciaOracle
+RepositorioFacturas ..> ConexionPostgres
+RepositorioFacturas ..> ConexionOracle
+RepositorioClientes ..> ConexionPostgres
+RepositorioClientes ..> ConexionOracle
+@enduml

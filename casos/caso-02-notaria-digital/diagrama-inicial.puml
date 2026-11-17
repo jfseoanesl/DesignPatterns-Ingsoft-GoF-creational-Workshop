@@ -1,0 +1,60 @@
+@startuml
+skinparam dpi 170
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 12
+skinparam roundCorner 6
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4A5C
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #3B4A5C
+  BorderThickness 1.3
+  HeaderBackgroundColor #ECEFF3
+  FontStyle bold
+  StereotypeFontColor #555555
+}
+skinparam note {
+  BackgroundColor #FDFBEA
+  BorderColor #B9A64B
+  FontSize 11
+}
+skinparam package {
+  BorderColor #8A8A8A
+  FontStyle normal
+}
+skinparam stereotypeIBackgroundColor #FFF4D6
+skinparam stereotypeABackgroundColor #E3F1E8
+hide empty members
+class ServicioContratos {
+  -catalogo: CatalogoClausulas
+  +arrendamiento(arrendador: String, arrendatario: String,
+  inmueble: String, canon: long): Contrato
+  +compraventa(vendedor: String, comprador: String,
+  bien: String, valor: long): Contrato
+}
+class ServicioRenovaciones {
+  -catalogo: CatalogoClausulas
+  +renovar(c: Contrato, nuevoCanon: long): Contrato
+}
+class CatalogoClausulas {
+  +{static} lecturas: int
+  -clausulas: Map<String, String>
+  +CatalogoClausulas()
+  +texto(codigo: String): String
+}
+class Contrato {
+  +tipo: String
+  +partes: String
+  +objeto: String
+  +valor: long
+  +clausulas: List<String>
+  +agregarClausula(texto: String): void
+}
+ServicioContratos *--> CatalogoClausulas : new
+ServicioRenovaciones *--> CatalogoClausulas : new
+ServicioContratos ..> Contrato : new
+ServicioRenovaciones ..> Contrato : new
+@enduml

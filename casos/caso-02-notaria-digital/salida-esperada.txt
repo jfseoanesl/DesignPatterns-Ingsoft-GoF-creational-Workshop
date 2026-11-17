@@ -1,0 +1,4 @@
+ARRENDAMIENTO | Inmobiliaria Sol / Ana Ruiz | Apto 301, Medellín | $2,100,000 | 6 cláusulas: [Objeto del contrato, Duración y prórrogas, Forma de pago, Servicios públicos a cargo del arrendatario, Resolución de controversias, Duración y prórrogas (renovación)]
+COMPRAVENTA | Luis Mora / Carlos Díaz | Vehículo ABC123 | $48,000,000 | 4 cláusulas: [Objeto del contrato, Forma de pago, Saneamiento por evicción, Resolución de controversias]
+ARRENDAMIENTO | Inmobiliaria Sol / Ana Ruiz | Apto 301, Medellín | $2,250,000 | 6 cláusulas: [Objeto del contrato, Duración y prórrogas, Forma de pago, Servicios públicos a cargo del arrendatario, Resolución de controversias, Duración y prórrogas (renovación)]
+Lecturas del catálogo: 3

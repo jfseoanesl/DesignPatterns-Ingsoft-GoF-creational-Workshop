@@ -1,0 +1,7 @@
+[PostgreSQL] SELECT * FROM factura WHERE 1=1 AND cliente = '900123' AND fecha BETWEEN '2026-01-01' AND '2026-06-30' AND estado = 'PAGADA' ORDER BY fecha DESC LIMIT 20 OFFSET 20
+[PostgreSQL] SELECT * FROM factura WHERE 1=1 AND total >= 1000000 ORDER BY fecha DESC
+[PostgreSQL] SELECT * FROM cliente ORDER BY nombre LIMIT 20 OFFSET 0
+[Oracle] ORA-00933: SQL command not properly ended -> SELECT * FROM factura WHERE 1=1 AND cliente = '900123' AND fecha BETWEEN '2026-01-01' AND '2026-06-30' AND estado = 'PAGADA' ORDER BY fecha DESC LIMIT 20 OFFSET 20
+[Oracle] SELECT * FROM factura WHERE 1=1 AND total >= 1000000 ORDER BY fecha DESC
+[Oracle] SELECT * FROM cliente ORDER BY nombre OFFSET 0 ROWS FETCH NEXT 20 ROWS ONLY
+Pools abiertos: 4

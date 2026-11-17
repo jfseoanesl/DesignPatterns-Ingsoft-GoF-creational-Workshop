@@ -1,0 +1,3 @@
+Cartagena | 2026-12-18→2026-12-22 | 2 viajero(s) | vuelo=VueloAndino hotel=HotelCaribe traslado=TrasladoBogota seguro=no tour=- | $2,165,000
+Cusco | 2026-12-18→2026-12-22 | 2 viajero(s) | vuelo=VueloInca hotel=HotelCusco traslado=TrasladoBogota seguro=sí tour=Machu Picchu | $2,835,000
+Santa Marta | 2026-12-22→2026-12-18 | 1 viajero(s) | vuelo=VueloAndino hotel=HotelCaribe traslado=- seguro=no tour=- | $-820,000

@@ -1,0 +1,3 @@
+Selva:    FondoSelva | obstáculos=[Liana, Liana, Liana] | enemigos=300 | primero=Jaguar(vida=30,x=0,sprite=64KB)
+Desierto: FondoDesierto | obstáculos=[Cactus, Cactus, Liana] | enemigos=300 | primero=Escorpion(vida=15,x=0,sprite=64KB)
+Sprites cargados desde disco: 600 (≈ 37 MB leídos)
